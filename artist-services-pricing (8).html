@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artist Services — Openstage</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0a; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+  /* ── HERO ── */
+  .hero { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px 0; }
+  .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+  .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #F5A623; flex-shrink: 0; }
+  .hero h1 { font-size: 52px; font-weight: 800; line-height: 1.03; letter-spacing: -0.03em; margin-bottom: 20px; max-width: 760px; }
+  .hero h1 em { font-style: normal; color: #F5A623; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.42); line-height: 1.7; margin-bottom: 32px; max-width: 560px; }
+  .hero-ctas { display: flex; gap: 12px; margin-bottom: 52px; }
+  .btn-primary { background: #F5A623; color: #000; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border-radius: 6px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn-secondary { background: transparent; color: rgba(255,255,255,0.55); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; text-decoration: none; display: inline-block; }
+
+  /* ── LAYER STRIP ── */
+  .layer-strip-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .layer-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 28px 0 36px; }
+  .layer-card { background: #141414; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; }
+  .layer-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5A623; margin-bottom: 6px; }
+  .layer-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .layer-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.55; flex: 1; margin-bottom: 14px; }
+  .badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 9px; border-radius: 4px; align-self: flex-start; margin-top: auto; }
+  .badge-gold { background: rgba(245,166,35,0.12); color: #F5A623; border: 1px solid rgba(245,166,35,0.25); }
+  .badge-muted { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.1); }
+
+  /* ── SECTION ── */
+  .section { max-width: 1200px; margin: 0 auto; padding: 56px 48px 0; }
+  .section-header { margin-bottom: 32px; }
+  .section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5A623; margin-bottom: 10px; }
+  .section-h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .section-sub { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.65; }
+
+  /* ── PACKAGE CARD ── */
+  .pkg-card { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; margin-bottom: 20px; overflow: hidden; display: grid; grid-template-columns: 1fr 252px; }
+  .pkg-main { border-right: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; }
+
+  /* Header row */
+  .pkg-header { padding: 28px 32px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .pkg-type-tag { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; background: rgba(245,166,35,0.1); color: #F5A623; border: 1px solid rgba(245,166,35,0.2); margin-bottom: 12px; }
+  .pkg-name { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 5px; }
+  .pkg-tagline { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #F5A623; margin-bottom: 12px; }
+  .pkg-desc { font-size: 13px; color: rgba(255,255,255,0.46); line-height: 1.65; }
+
+  /* Includes row */
+  .pkg-includes { padding: 24px 32px 28px; }
+  .pkg-includes-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5A623; margin-bottom: 16px; }
+  .pkg-bullets { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px 24px; }
+  .pkg-bullets.two-col { grid-template-columns: repeat(2, 1fr); }
+  .pkg-bullets li { font-size: 12.5px; color: rgba(255,255,255,0.68); line-height: 1.45; display: flex; align-items: flex-start; gap: 9px; padding: 4px 0; }
+  .pkg-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #F5A623; flex-shrink: 0; margin-top: 5px; }
+  .pkg-divider-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5A623; margin: 20px 0 14px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+
+  /* Price column */
+  .pkg-price-col { padding: 28px 24px; display: flex; flex-direction: column; }
+  .price-block { margin-bottom: 4px; }
+  .price-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-bottom: 7px; }
+  .price-val { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; line-height: 1; color: #fff; margin-bottom: 5px; }
+  .price-val .per { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.35); }
+  .price-note { font-size: 11.5px; color: rgba(255,255,255,0.36); line-height: 1.55; }
+  .see-below { color: rgba(255,255,255,0.2); font-style: italic; }
+  .price-sep { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 16px 0; }
+  .pkg-meta { font-size: 11px; color: rgba(255,255,255,0.26); line-height: 1.9; }
+  .pkg-meta strong { color: rgba(255,255,255,0.52); font-weight: 600; }
+  .avail-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-bottom: 9px; }
+  .avail-pill { display: block; font-size: 11.5px; padding: 7px 11px; border-radius: 7px; margin-bottom: 7px; line-height: 1.45; }
+  .avail-pill.gold { background: rgba(245,166,35,0.09); color: #F5A623; border: 1px solid rgba(245,166,35,0.2); }
+  .avail-pill.neutral { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.58); border: 1px solid rgba(255,255,255,0.09); }
+  .btn-pkg-cta { display: block; text-align: center; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 11px 16px; border-radius: 6px; background: #F5A623; color: #000; text-decoration: none; cursor: pointer; }
+
+  /* ── DIVIDER ── */
+  .full-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 56px auto 0; }
+
+  /* ── RATE TABLE ── */
+  .rate-container { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; }
+  .rate-table { width: 100%; border-collapse: collapse; }
+  .rate-table thead tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .rate-table th { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.26); text-align: left; padding: 16px 24px; }
+  .rate-table th.align-right { text-align: right; }
+  .rate-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .rate-table tbody tr:last-child { border-bottom: none; }
+  .rate-table td { padding: 18px 24px; vertical-align: top; }
+  .rate-service { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .rate-desc { font-size: 12px; color: rgba(255,255,255,0.36); line-height: 1.6; }
+  .rate-note-cell { font-size: 11.5px; color: rgba(255,255,255,0.28); line-height: 1.55; width: 180px; padding-top: 20px; }
+  .rate-cta-cell { text-align: right; white-space: nowrap; width: 160px; vertical-align: middle; }
+  .btn-rate-cta { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 16px; border-radius: 6px; background: rgba(245,166,35,0.1); color: #F5A623; border: 1px solid rgba(245,166,35,0.25); text-decoration: none; cursor: pointer; white-space: nowrap; }
+
+  /* ── FAQ ── */
+  .faq-grid { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); cursor: pointer; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; gap: 16px; }
+  .faq-q-text { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.82); line-height: 1.4; }
+  .faq-icon { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .faq-icon svg { width: 10px; height: 10px; stroke: rgba(255,255,255,0.45); fill: none; stroke-width: 2; stroke-linecap: round; transition: transform 0.2s; }
+  .faq-item.open .faq-icon svg { transform: rotate(45deg); }
+  .faq-a { display: none; padding: 0 28px 20px 28px; font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.7; max-width: 760px; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── FOOTER ── */
+  .footer-wrap { max-width: 1200px; margin: 72px auto 0; border-top: 1px solid rgba(255,255,255,0.07); }
+  .footer-cta { text-align: center; padding: 80px 48px 72px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .footer-cta h2 { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 16px; }
+  .footer-cta-sub { font-size: 15px; color: rgba(255,255,255,0.38); margin-bottom: 36px; line-height: 1.6; }
+  .btn-footer { background: #F5A623; color: #000; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 16px 48px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 28px 48px 56px; }
+  .footer-logo { font-size: 14px; font-weight: 800; letter-spacing: -0.01em; color: rgba(255,255,255,0.45); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 11px; color: rgba(255,255,255,0.26); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Openstage &nbsp;/&nbsp; Artist Services</div>
+    <h1>From world-class support to <em>expert D2F strategy</em> when you're ready to go further.</h1>
+    <p class="hero-sub">Platform Support is included on every plan. Artist Services gives you a D2F specialist to build your strategy, run your campaigns, or both. Any artist, any plan.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Talk To Our Team</a>
+      <a href="#packages" class="btn-secondary">See packages</a>
+    </div>
+  </div>
+
+  <div class="layer-strip-wrap">
+    <div class="layer-strip">
+      <div class="layer-card">
+        <div class="layer-label">Layer 1</div>
+        <div class="layer-title">Platform Support</div>
+        <div class="layer-desc">Reactive help. Questions answered, problems solved. If the question is "how do I do this in Openstage?" — it's Support.</div>
+        <span class="badge badge-muted">Included — all plans</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-label">Layer 2</div>
+        <div class="layer-title">Artist Success</div>
+        <div class="layer-desc">Proactive, outcome-driven relationship management. Ensures customers have what they need to hit their goals and stay on platform.</div>
+        <span class="badge badge-muted">Tiered by plan</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-label">Layer 3</div>
+        <div class="layer-title">Artist Services</div>
+        <div class="layer-desc">Done-for-you or high-touch execution. If the question is "can someone just build or run this for me?" — it's Artist Services.</div>
+        <span class="badge badge-gold">Paid add-on — any plan</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PACKAGES ══ -->
+<div class="section" id="packages">
+  <div class="section-header">
+    <div class="section-eyebrow">Packages</div>
+    <h2 class="section-h2">A specialist in your corner. From setup to full campaign execution.</h2>
+    <p class="section-sub">Three packages built around the moments that matter most. Get set up right, build your growth strategy, or put a D2F expert on your next release. Any plan, any artist.</p>
+  </div>
+
+  <!-- ONBOARDING -->
+  <div class="pkg-card">
+    <div class="pkg-main">
+      <div class="pkg-header">
+        <div class="pkg-type-tag">Package</div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:5px;">
+          <div class="pkg-name" style="margin-bottom:0;">Concierge Onboarding</div>
+          <a href="#" class="btn-pkg-cta" style="flex-shrink:0;">Talk To Our Team</a>
+        </div>
+        <div class="pkg-tagline">Set up for success</div>
+        <div class="pkg-desc">Data imported, segments built, first journey live, team walked through. One month, flat fee. Removes every reason a new artist stalls before they start.</div>
+      </div>
+      <div class="pkg-includes">
+        <div class="pkg-includes-label">What's included</div>
+        <ul class="pkg-bullets">
+          <li>Audit and data collation</li>
+          <li>Ingest into platform</li>
+          <li>Core segments created</li>
+          <li>Landing page set up</li>
+          <li>Link-in-bio environment</li>
+          <li>SMS and email templates configured</li>
+          <li>Lifecycle flows and journey design</li>
+          <li>Privacy policy review</li>
+          <li>Artist profile review</li>
+          <li>Product tutorials</li>
+          <li>Data analysis tutorial</li>
+          <li>Inside Out and 1PD capture playbook session</li>
+        </ul>
+        <div class="pkg-divider-label">What you get</div>
+        <ul class="pkg-bullets two-col">
+          <li>Two 60-minute calls (bookend front and back)</li>
+          <li>On-demand videos / PDFs (resource library)</li>
+          <li>In-product customized profile / templates / flows / segments</li>
+          <li>Standard intake form with requirements</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-price-col">
+      <div class="avail-label">Availability</div>
+      <span class="avail-pill gold">Included in Legendary</span>
+      <span class="avail-pill neutral">Sold separately to Build</span>
+    </div>
+  </div>
+
+  <!-- AUDIENCE DEVELOPMENT -->
+  <div class="pkg-card">
+    <div class="pkg-main">
+      <div class="pkg-header">
+        <div class="pkg-type-tag">Package</div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:5px;">
+          <div class="pkg-name" style="margin-bottom:0;">Audience Development Strategy</div>
+          <a href="#" class="btn-pkg-cta" style="flex-shrink:0;">Talk To Our Team</a>
+        </div>
+        <div class="pkg-tagline">Strategy. Plan. Playbook.</div>
+        <div class="pkg-desc">Two modes: we build the plan and they execute, or we do it for them. Artist provides all creative assets in the done-for-you model. Grounded in the Inside Out methodology.</div>
+      </div>
+      <div class="pkg-includes">
+        <div class="pkg-includes-label">What's included</div>
+        <ul class="pkg-bullets two-col">
+          <li>Full fanbase audit</li>
+          <li>2 x strategy workshops with your specialist</li>
+          <li>Fan development playbook written for the artist</li>
+          <li>Journeys mapped across acquire, engage, activate</li>
+          <li>Segmentation logic and triggers defined</li>
+          <li>Intake consult: goals, brand overview, preferences, restrictions</li>
+        </ul>
+        <div class="pkg-divider-label">What you get</div>
+        <ul class="pkg-bullets two-col">
+          <li>Two 60-minute calls (bookend front and back)</li>
+          <li>Custom growth plan and genre-specific playbook</li>
+          <li>Async specialist access throughout</li>
+          <li>Done-for-you execution available <span class="see-below">(see rate card below)</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-price-col">
+      <div class="avail-label">Availability</div>
+      <span class="avail-pill neutral">Any plan, any artist</span>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN MANAGEMENT -->
+  <div class="pkg-card">
+    <div class="pkg-main">
+      <div class="pkg-header">
+        <div class="pkg-type-tag">Package</div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:5px;">
+          <div class="pkg-name" style="margin-bottom:0;">Campaign Management</div>
+          <a href="#" class="btn-pkg-cta" style="flex-shrink:0;">Talk To Our Team</a>
+        </div>
+        <div class="pkg-tagline">Releases. Tours. Drops.</div>
+        <div class="pkg-desc">Built around a specific moment: tour launch, presale, ticket unlock, album drop, or a longer multi-month arc. Primary commercial entry point for Artist Services. 3-month minimum. Anything beyond scope billed against the rate card.</div>
+      </div>
+      <div class="pkg-includes">
+        <div class="pkg-includes-label">What's included</div>
+        <ul class="pkg-bullets">
+          <li>Campaign brief and full architecture in Openstage</li>
+          <li>Copy written for all fan touchpoints</li>
+          <li>Execution across respective domains</li>
+          <li>Cross-functional campaign coordination and leadership</li>
+          <li>Weekly alignment sessions</li>
+          <li>Stakeholder check-ins</li>
+          <li>Day-of monitoring (standard hours)</li>
+          <li>Weekly email reporting</li>
+          <li>Post-campaign debrief</li>
+        </ul>
+        <div class="pkg-divider-label">What you get</div>
+        <ul class="pkg-bullets two-col">
+          <li>Two 60-minute calls (bookend front and back)</li>
+          <li>Strategy and execution plan in writing before work starts</li>
+          <li>Weekly standup / alignment</li>
+          <li>End-of-engagement analysis and next steps</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-price-col">
+      <div class="avail-label">Availability</div>
+      <span class="avail-pill neutral">Any plan, any artist</span>
+    </div>
+  </div>
+</div>
+
+<hr class="full-divider">
+
+<!-- ══ RATE CARD ══ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Rate Card</div>
+    <h2 class="section-h2">For anything outside package scope, or à la carte.</h2>
+    <p class="section-sub">For anything outside package scope, or standalone engagements. Pricing on request — talk to the team before work begins.</p>
+  </div>
+  <div class="rate-container">
+    <table class="rate-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Notes</th>
+          <th class="align-right">Pricing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="rate-service">Fan Relationship Management</div><div class="rate-desc">Monthly segmentation review and refinement. Fan comms written and built. Lifecycle flow monitoring. Monthly performance report. 1 x monthly review call.</div></td>
+          <td class="rate-note-cell">3-month minimum.</td>
+          <td class="rate-cta-cell"><a href="#" class="btn-rate-cta">Talk To Our Team</a></td>
+        </tr>
+        <tr>
+          <td><div class="rate-service">Community Management</div><div class="rate-desc">Daily moderation. Content calendar executed. Engagement activations. Superfan identification and flagging. Monthly report and review call.</div></td>
+          <td class="rate-note-cell">3-month minimum.</td>
+          <td class="rate-cta-cell"><a href="#" class="btn-rate-cta">Talk To Our Team</a></td>
+        </tr>
+        <tr>
+          <td><div class="rate-service">Day-of monitoring (standard)</div><div class="rate-desc">Dedicated resource, 8 hours, standard business hours.</div></td>
+          <td class="rate-note-cell"></td>
+          <td class="rate-cta-cell"><a href="#" class="btn-rate-cta">Talk To Our Team</a></td>
+        </tr>
+        <tr>
+          <td><div class="rate-service">Day-of monitoring (after hours)</div><div class="rate-desc">Same coverage outside standard hours or weekends.</div></td>
+          <td class="rate-note-cell">Agree timezone and hours in advance.</td>
+          <td class="rate-cta-cell"><a href="#" class="btn-rate-cta">Talk To Our Team</a></td>
+        </tr>
+        <tr>
+          <td><div class="rate-service">Execution</div><div class="rate-desc">Hands-on build work outside a package scope.</div></td>
+          <td class="rate-note-cell"></td>
+          <td class="rate-cta-cell"><a href="#" class="btn-rate-cta">Talk To Our Team</a></td>
+        </tr>
+        <tr>
+          <td><div class="rate-service">Bespoke</div><div class="rate-desc">Multi-territory, complex builds, extended engagements.</div></td>
+          <td class="rate-note-cell">Requires scoping call.</td>
+          <td class="rate-cta-cell"><a href="#" class="btn-rate-cta">Talk To Our Team</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="full-divider">
+
+<!-- ══ FAQ ══ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Frequently asked questions</div>
+    <h2 class="section-h2">Common questions about Artist Services.</h2>
+  </div>
+  <div class="faq-grid">
+
+    <div class="faq-item open" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">Do I need to be on Legendary to buy Artist Services?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">No. Any package, any plan, any artist. A Build artist can buy Campaign Management. A Legendary artist can buy Audience Development. Artist Services are completely separate from your support tier and have nothing to do with which plan you're on.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">I'm on Legendary. Do I get advisory sessions AND Artist Services?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Yes — they stack. Legendary gives you 4 x monthly advisory sessions focused on platform guidance. Artist Services is a separate engagement where a D2F specialist executes work for you. Different products, different purposes. Legendary artists can and should add Artist Services for campaigns and key moments.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">How is Artist Services different from Platform Support?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Support answers "how do I do this in Openstage?" Artist Services answers "what should I be doing to grow, and can someone help build or run it?" Support is reactive. Artist Services is prescriptive, custom, and hands-on execution.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">Who actually does the work?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">A D2F specialist — not the support team. Your specialist is a separate engagement, scoped and signed off before work starts. They understand the artist, the fanbase, and the goals they're building toward.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">How does billing work?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">30-day cycles from date of purchase. One-off for single activations. Minimum 3 months for ongoing Campaign Management. Anything outside scope is billed against the rate card — that conversation happens before work expands, not after.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">My campaign is longer than 30 days. What do I do?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Campaign Management is built for this. Extended and multi-month engagements are available — the 3-month minimum is the starting point, not the ceiling. Talk to the team and we'll scope it correctly from the start.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">What if I need more than what was scoped?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Anything outside the original scope is billed against the rate card. That conversation happens before work expands — never after. All scope changes are agreed in writing before they begin.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">When will Artist Services be available?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Launching with a small pilot group first. Talk to the team to get on the list. We're not scaling delivery until the pilot is validated and onboarding resource is confirmed.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer-wrap">
+  <div class="footer-cta">
+    <h2>Ready to go further?<br>We've got you covered.</h2>
+    <p class="footer-cta-sub">Tell us what's coming up. We figure out which package fits and scope it properly.</p>
+    <a href="#" class="btn-footer">Talk To Our Team</a>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-logo">Openstage</div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Support</a>
+    </div>
+    <div class="footer-copy">Internal use only. Not for distribution.</div>
+  </div>
+</div>
+
+</body>
+</html>
