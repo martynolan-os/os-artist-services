@@ -11,17 +11,33 @@
 
   /* ── HERO ── */
   .hero { border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px 0; }
+  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px 0; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+  .hero-text { padding-bottom: 8px; }
   .pill-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #F5C518; border: 1px solid rgba(245,197,24,.4); border-radius: 100px; padding: 7px 18px; }
-  .hero h1 { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 58px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 20px; max-width: 760px; }
+  .hero h1 { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 50px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 20px; }
   .hero h1 em { font-style: normal; color: #F5C518; }
-  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.42); line-height: 1.7; margin-bottom: 32px; max-width: 560px; }
-  .hero-ctas { display: flex; gap: 12px; margin-bottom: 52px; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.42); line-height: 1.7; margin-bottom: 32px; }
+  .hero-ctas { display: flex; gap: 12px; }
+
+  /* HERO VISUAL - PACKAGE LADDER */
+  .hero-visual { display: flex; flex-direction: column; gap: 10px; }
+  .hv-intro { font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 4px; }
+  .ladder-step { display: flex; align-items: center; gap: 16px; background: #111113; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px 20px; position: relative; transition: all .2s; }
+  .ladder-step.highlight { border-color: rgba(245,197,24,.35); background: rgba(245,197,24,.04); box-shadow: 0 0 40px rgba(245,197,24,.05); }
+  .ladder-num { font-family: 'Anton', sans-serif; font-size: 28px; color: rgba(255,255,255,.18); line-height: 1; flex-shrink: 0; width: 38px; }
+  .ladder-step.highlight .ladder-num { color: #F5C518; }
+  .ladder-body { flex: 1; }
+  .ladder-name { font-family: 'Anton', sans-serif; font-size: 17px; text-transform: uppercase; letter-spacing: .01em; color: #fff; margin-bottom: 3px; }
+  .ladder-step.highlight .ladder-name { color: #F5C518; }
+  .ladder-desc { font-size: 12px; color: rgba(255,255,255,.42); line-height: 1.4; }
+  .ladder-tag { font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); border: 1px solid rgba(255,255,255,.12); border-radius: 100px; padding: 4px 10px; flex-shrink: 0; }
+  .ladder-step.highlight .ladder-tag { color: #F5C518; border-color: rgba(245,197,24,.4); }
+
   .btn-primary { background: #F5C518; color: #000; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border-radius: 6px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
   .btn-secondary { background: transparent; color: rgba(255,255,255,0.55); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; text-decoration: none; display: inline-block; }
 
   /* ── LAYER STRIP ── */
-  .layer-strip-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .layer-strip-wrap { max-width: 1200px; margin: 0 auto; padding: 44px 48px 0; }
   .layer-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 28px 0 36px; }
   .layer-card { background: #141414; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; }
   .layer-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin-bottom: 6px; }
@@ -122,11 +138,47 @@
 <!-- ══ HERO ══ -->
 <div class="hero">
   <div class="hero-inner">
-    <div style="margin-bottom:20px;"><span class="pill-eyebrow">Artist Services</span></div>
-    <h1>World-class support to get you started. <em>Expert D2F strategy and execution</em> when you're ready to go further.</h1>
-    <p class="hero-sub">Openstage is the only D2F platform that gives you both the operating system and the team to run it. A trusted partner in your corner, putting the platform and your fan data to work to deliver on every goal you set.</p>
-    <div class="hero-ctas">
-      <a href="#" class="btn-primary">Talk To Our Team</a>
+    <div class="hero-text">
+      <div style="margin-bottom:20px;"><span class="pill-eyebrow">Artist Services</span></div>
+      <h1>World-class support to get you started. <em>Expert D2F strategy and execution</em> when you're ready to go further.</h1>
+      <p class="hero-sub">Openstage is the only D2F platform that gives you both the operating system and the team to run it. A trusted partner in your corner, putting the platform and your fan data to work to deliver on every goal you set.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">Talk To Our Team</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ladder-step">
+        <div class="ladder-num">01</div>
+        <div class="ladder-body">
+          <div class="ladder-name">Concierge Onboarding</div>
+          <div class="ladder-desc">Get set up for success</div>
+        </div>
+        <div class="ladder-tag">Setup</div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-num">02</div>
+        <div class="ladder-body">
+          <div class="ladder-name">Audience Development</div>
+          <div class="ladder-desc">Build the strategy</div>
+        </div>
+        <div class="ladder-tag">Strategy</div>
+      </div>
+      <div class="ladder-step highlight">
+        <div class="ladder-num">03</div>
+        <div class="ladder-body">
+          <div class="ladder-name">Campaign Execution</div>
+          <div class="ladder-desc">Deliver a specific moment</div>
+        </div>
+        <div class="ladder-tag">Execution</div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-num">04</div>
+        <div class="ladder-body">
+          <div class="ladder-name">Fan Relationship Mgmt</div>
+          <div class="ladder-desc">Ongoing optimization and execution</div>
+        </div>
+        <div class="ladder-tag">Lifecycle</div>
+      </div>
     </div>
   </div>
 
