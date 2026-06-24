@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artist Services / Openstage</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0a; color: #fff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+  /* ── HERO ── */
+  .hero { }
+  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px 48px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+  .hero-text { padding-bottom: 8px; }
+  .pill-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #F5C518; border: 1px solid rgba(245,197,24,.4); border-radius: 100px; padding: 7px 18px; }
+  .hero h1 { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 50px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: #fff; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.42); line-height: 1.7; margin-bottom: 32px; }
+  .hero-ctas { display: flex; gap: 12px; }
+
+  /* HERO VISUAL - PACKAGE LADDER */
+  .hero-visual { display: flex; flex-direction: column; gap: 10px; }
+  .hv-intro { font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 4px; }
+  .ladder-step { display: flex; align-items: center; gap: 16px; background: #111113; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px 20px; position: relative; transition: all .2s; }
+  .ladder-step.highlight { border-color: rgba(245,197,24,.35); background: rgba(245,197,24,.04); box-shadow: 0 0 40px rgba(245,197,24,.05); }
+  .ladder-num { font-family: 'Anton', sans-serif; font-size: 26px; color: rgba(255,255,255,.18); line-height: 1; flex-shrink: 0; width: 30px; }
+  .ladder-step.highlight .ladder-num { color: #F5C518; }
+  .ladder-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.3; flex: 1; }
+  .ladder-step.highlight .ladder-desc { color: rgba(255,255,255,.8); }
+  .ladder-tag { font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.14); border-radius: 100px; padding: 5px 12px; flex-shrink: 0; width: 96px; text-align: center; }
+  .ladder-step.highlight .ladder-tag { color: #F5C518; border-color: rgba(245,197,24,.4); background: rgba(245,197,24,.06); }
+
+  .btn-primary { background: #F5C518; color: #000; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border-radius: 6px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn-secondary { background: transparent; color: rgba(255,255,255,0.55); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; text-decoration: none; display: inline-block; }
+
+  /* ── LAYER STRIP ── */
+  .layer-strip-wrap { max-width: 1200px; margin: 0 auto; padding: 44px 48px 0; }
+  .layer-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 28px 0 36px; }
+  .layer-card { background: #141414; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; }
+  .layer-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+  .layer-title { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 16px; letter-spacing: .005em; margin-bottom: 6px; color: #F5C518; }
+  .layer-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.55; flex: 1; margin-bottom: 14px; }
+  .badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 9px; border-radius: 4px; align-self: flex-start; margin-top: auto; }
+  .badge-gold { background: rgba(245,197,24,0.12); color: #F5C518; border: 1px solid rgba(245,197,24,0.25); }
+  .badge-muted { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.1); }
+
+  /* ── SECTION ── */
+  .section { max-width: 1200px; margin: 0 auto; padding: 56px 48px 0; }
+  .section-header { margin-bottom: 32px; }
+  .section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin-bottom: 10px; }
+  .section-h2 { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 32px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 8px; }
+  .section-sub { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.65; }
+
+  /* ── PACKAGE CARD ── */
+  .pkg-card { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; margin-bottom: 14px; overflow: hidden; }
+  .pkg-header { padding: 26px 32px; cursor: pointer; display: flex; align-items: flex-start; gap: 20px; }
+  .pkg-header-text { flex: 1; }
+  .pkg-chevron { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; transition: all .2s; }
+  .pkg-chevron svg { width: 13px; height: 13px; stroke: rgba(255,255,255,0.5); fill: none; stroke-width: 2; transition: transform .25s; }
+  .pkg-card.open .pkg-chevron { border-color: rgba(245,197,24,0.5); background: rgba(245,197,24,0.08); }
+  .pkg-card.open .pkg-chevron svg { transform: rotate(180deg); stroke: #F5C518; }
+  .pkg-body-collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+  .pkg-card.open .pkg-body-collapse { grid-template-rows: 1fr; }
+  .pkg-body-inner { overflow: hidden; }
+  .pkg-body-grid { display: grid; grid-template-columns: 1fr 252px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .pkg-main { border-right: 1px solid rgba(255,255,255,0.08); }
+
+  /* Header row */
+  .pkg-name { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 26px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 5px; color: #fff; }
+  .pkg-tagline { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #F5C518; margin-bottom: 12px; }
+  .pkg-desc { font-size: 13px; color: rgba(255,255,255,0.46); line-height: 1.65; }
+
+  /* Includes row */
+  .pkg-includes { padding: 24px 32px 28px; }
+  .pkg-includes-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin-bottom: 16px; }
+  .pkg-bullets { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px 24px; }
+  .pkg-bullets.two-col { grid-template-columns: repeat(2, 1fr); }
+  .pkg-bullets.single-col { grid-template-columns: 1fr; gap: 12px; }
+  .pkg-bullets li { font-size: 13.5px; color: rgba(255,255,255,0.72); line-height: 1.45; display: flex; align-items: flex-start; gap: 9px; padding: 4px 0; }
+  .pkg-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #F5C518; flex-shrink: 0; margin-top: 5px; }
+  .pkg-bullets.single-col li { font-size: 13.5px; color: rgba(255,255,255,0.72); line-height: 1.5; gap: 11px; padding: 0; }
+  .pkg-bullets.single-col li::before { content: ''; width: 14px; height: 14px; border-radius: 0; background: none; margin-top: 1px; flex-shrink: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpolyline points='2,7.5 5.5,11 12,3' fill='none' stroke='%23F5C518' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; }
+  .pkg-divider-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin: 20px 0 14px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+
+  /* Price column */
+  .pkg-price-col { padding: 24px; display: flex; flex-direction: column; align-items: stretch; }
+  .price-block { margin-bottom: 4px; }
+  .price-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-bottom: 7px; }
+  .price-val { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; line-height: 1; color: #fff; margin-bottom: 5px; }
+  .price-val .per { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.35); }
+  .price-note { font-size: 11.5px; color: rgba(255,255,255,0.36); line-height: 1.55; }
+  .see-below { color: rgba(255,255,255,0.2); font-style: italic; }
+  .price-sep { border: none; margin: 16px 0; }
+  .pkg-meta { font-size: 11px; color: rgba(255,255,255,0.26); line-height: 1.9; }
+  .pkg-meta strong { color: rgba(255,255,255,0.52); font-weight: 600; }
+  .avail-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-bottom: 9px; }
+  .avail-pill { display: block; font-size: 11.5px; padding: 7px 11px; border-radius: 7px; margin-bottom: 7px; line-height: 1.45; }
+  .avail-pill.gold { background: rgba(245,197,24,0.09); color: #F5C518; border: 1px solid rgba(245,197,24,0.2); }
+  .avail-pill.neutral { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.58); border: 1px solid rgba(255,255,255,0.09); }
+  .btn-pkg-cta { display: block; text-align: center; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 11px 16px; border-radius: 6px; background: #F5C518; color: #000; text-decoration: none; cursor: pointer; }
+
+  /* ── DIVIDER ── */
+  .full-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); max-width: 1200px; margin: 56px auto 0; }
+
+  /* ── RATE TABLE ── */
+  .rate-container { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; }
+  .rate-table { width: 100%; border-collapse: collapse; }
+  .rate-table thead tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .rate-table th { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.26); text-align: left; padding: 16px 24px; }
+  .rate-table th.align-right { text-align: right; }
+  .rate-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .rate-table tbody tr:last-child { border-bottom: none; }
+  .rate-table td { padding: 18px 24px; vertical-align: top; }
+  .rate-service { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .rate-desc { font-size: 12px; color: rgba(255,255,255,0.36); line-height: 1.6; }
+  .rate-note-cell { font-size: 11.5px; color: rgba(255,255,255,0.28); line-height: 1.55; width: 180px; padding-top: 20px; }
+  .rate-cta-cell { text-align: right; white-space: nowrap; width: 160px; vertical-align: middle; }
+  .btn-rate-cta { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 16px; border-radius: 6px; background: rgba(245,197,24,0.1); color: #F5C518; border: 1px solid rgba(245,197,24,0.25); text-decoration: none; cursor: pointer; white-space: nowrap; }
+
+  /* ── FAQ ── */
+  .faq-grid { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); cursor: pointer; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; gap: 16px; }
+  .faq-q-text { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.82); line-height: 1.4; }
+  .faq-icon { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .faq-icon svg { width: 10px; height: 10px; stroke: rgba(255,255,255,0.45); fill: none; stroke-width: 2; stroke-linecap: round; transition: transform 0.2s; }
+  .faq-item.open .faq-icon svg { transform: rotate(45deg); }
+  .faq-a { display: none; padding: 0 28px 20px 28px; font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.7; max-width: 760px; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── FOOTER ── */
+  .footer-wrap { max-width: 1200px; margin: 48px auto 0; }
+  .footer-cta { text-align: center; padding: 80px 48px 72px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .footer-cta h2 { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 48px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 16px; }
+  .footer-cta-sub { font-size: 15px; color: rgba(255,255,255,0.38); margin-bottom: 36px; line-height: 1.6; }
+  .btn-footer { background: #F5C518; color: #000; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 16px 48px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 28px 48px 56px; }
+  .footer-logo { font-family: 'Anton', sans-serif; font-size: 20px; text-transform: uppercase; letter-spacing: .02em; color: #F5C518; }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 11px; color: rgba(255,255,255,0.26); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div style="margin-bottom:20px;"><span class="pill-eyebrow">Artist Services</span></div>
+      <h1><em>Expert D2F strategy and execution</em> when you're ready to go further.</h1>
+      <p class="hero-sub">Openstage is the only D2F platform that gives you both the operating system and the team to run it. A trusted partner in your corner, putting the platform and your fan data to work to deliver on every goal you set.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">Talk To Our Team</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ladder-step">
+        <div class="ladder-num">1</div>
+        <div class="ladder-tag">Setup</div>
+        <div class="ladder-desc">Get set up for success</div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-num">2</div>
+        <div class="ladder-tag">Strategy</div>
+        <div class="ladder-desc">Build the strategy</div>
+      </div>
+      <div class="ladder-step highlight">
+        <div class="ladder-num">3</div>
+        <div class="ladder-tag">Execution</div>
+        <div class="ladder-desc">We run your campaign, end to end</div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-num">4</div>
+        <div class="ladder-tag">Lifecycle</div>
+        <div class="ladder-desc">Always-on fan messaging</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PACKAGES ══ -->
+<div class="section" id="packages">
+  <div class="section-header">
+    <h2 class="section-h2" style="color:#F5C518;">Packages</h2>
+    <p class="section-sub">Four ways to work with us. One-off or ongoing and always on. We do the work and show you the ropes. We meet you wherever you're at, so you and your fans get the most out of Openstage.</p>
+  </div>
+
+  <!-- ONBOARDING -->
+  <div class="pkg-card">
+    <div class="pkg-header" onclick="this.closest('.pkg-card').classList.toggle('open')">
+      <div class="pkg-header-text">
+        <div class="pkg-name">Concierge Onboarding</div>
+        <div class="pkg-tagline">Set up for success</div>
+        <div class="pkg-desc">Data imported, audiences built, first journey live, team walked through. Removes every reason a new artist stalls before they start.</div>
+      </div>
+      <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+    </div>
+    <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
+    <div class="pkg-main">
+      <div class="pkg-includes">
+        <div class="pkg-includes-label">What we do for you</div>
+        <ul class="pkg-bullets two-col">
+          <li>Data audit, collation, and import</li>
+          <li>Core audiences built</li>
+          <li>Landing page and link-in-bio set up</li>
+          <li>Email and SMS templates configured</li>
+          <li>Lifecycle flows and journeys designed</li>
+          <li>Privacy policy review</li>
+          <li>Artist profile review</li>
+          <li>Platform and data tutorials, plus 1PD capture playbook session</li>
+        </ul>
+        <div class="pkg-divider-label">What you walk away with</div>
+        <ul class="pkg-bullets single-col">
+          <li>A fully configured account, ready to grow from the moment you log in</li>
+          <li>Two 60-minute calls bookending the work, plus an on-demand resource library to keep going</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-price-col">
+      <a href="#" class="btn-pkg-cta">Talk To Our Team</a>
+      <hr class="price-sep">
+      <div class="avail-label">Engagement type</div>
+      <span class="avail-pill gold">One-time</span>
+      <hr class="price-sep">
+      <div class="avail-label">Availability</div>
+      <span class="avail-pill gold">Included in Legendary</span>
+      <span class="avail-pill neutral">Sold separately to Build</span>
+    </div>
+    </div></div></div>
+  </div>
+
+  <!-- AUDIENCE DEVELOPMENT -->
+  <div class="pkg-card">
+    <div class="pkg-header" onclick="this.closest('.pkg-card').classList.toggle('open')">
+      <div class="pkg-header-text">
+        <div class="pkg-name">Audience Development Strategy</div>
+        <div class="pkg-tagline">Strategy. Plan. Playbook.</div>
+        <div class="pkg-desc">Two modes: we build the plan and they execute, or we do it for them. Artist provides all creative assets in the done-for-you model. Grounded in the Inside Out methodology.</div>
+      </div>
+      <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+    </div>
+    <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
+    <div class="pkg-main">
+      <div class="pkg-includes">
+        <div class="pkg-includes-label">What we do for you</div>
+        <ul class="pkg-bullets two-col">
+          <li>Full fanbase audit and analysis</li>
+          <li>Two strategy workshops with your specialist</li>
+          <li>Segmentation logic and triggers defined</li>
+          <li>Fan journeys mapped across acquire, engage, and activate</li>
+          <li>Custom fan development playbook written for you</li>
+          <li>Intake consult covering goals, brand, preferences, and restrictions</li>
+        </ul>
+        <div class="pkg-divider-label">What you walk away with</div>
+        <ul class="pkg-bullets single-col">
+          <li>A clear, genre-specific growth strategy built around where you are and where you want to go</li>
+          <li>A playbook you can run yourself, plus async access to your specialist throughout</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-price-col">
+      <a href="#" class="btn-pkg-cta">Talk To Our Team</a>
+      <hr class="price-sep">
+      <div class="avail-label">Engagement type</div>
+      <span class="avail-pill gold">One-time</span>
+      <hr class="price-sep">
+      <div class="avail-label">Availability</div>
+      <span class="avail-pill neutral">Any plan, any artist</span>
+    </div>
+    </div></div></div>
+  </div>
+
+  <!-- CAMPAIGN MANAGEMENT -->
+  <div class="pkg-card">
+    <div class="pkg-header" onclick="this.closest('.pkg-card').classList.toggle('open')">
+      <div class="pkg-header-text">
+        <div class="pkg-name">Campaign Execution</div>
+        <div class="pkg-tagline">Releases. Tours. Drops.</div>
+        <div class="pkg-desc">Built around a specific moment: tour launch, presale, ticket unlock, album drop, or a longer multi-month arc. The primary commercial entry point for Artist Services.</div>
+      </div>
+      <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+    </div>
+    <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
+    <div class="pkg-main">
+      <div class="pkg-includes">
+        <div class="pkg-includes-label">The work</div>
+        <ul class="pkg-bullets">
+          <li>Campaign brief and full architecture in Openstage</li>
+          <li>Copy written for all fan touchpoints</li>
+          <li>Execution across respective domains</li>
+          <li>Cross-functional campaign coordination and leadership</li>
+          <li>Weekly alignment sessions</li>
+          <li>Stakeholder check-ins</li>
+          <li>Day-of monitoring (standard hours)</li>
+          <li>Weekly email reporting</li>
+          <li>Post-campaign debrief</li>
+        </ul>
+        <div class="pkg-divider-label">What you walk away with</div>
+        <ul class="pkg-bullets two-col">
+          <li>Two 60-minute calls (bookend front and back)</li>
+          <li>Strategy and execution plan in writing before work starts</li>
+          <li>Weekly standup / alignment</li>
+          <li>End-of-engagement analysis and next steps</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-price-col">
+      <a href="#" class="btn-pkg-cta">Talk To Our Team</a>
+      <hr class="price-sep">
+      <div class="avail-label">Engagement type</div>
+      <span class="avail-pill neutral">Monthly</span>
+      <div style="font-size:11px; color:rgba(255,255,255,0.28); margin: 4px 0 12px; padding-left: 2px;">*3 month minimum</div>
+      <hr class="price-sep">
+      <div class="avail-label">Availability</div>
+      <span class="avail-pill neutral">Any plan, any artist</span>
+    </div>
+    </div></div></div>
+  </div>
+
+  <!-- FAN RELATIONSHIP MANAGEMENT -->
+  <div class="pkg-card">
+    <div class="pkg-header" onclick="this.closest('.pkg-card').classList.toggle('open')">
+      <div class="pkg-header-text">
+        <div class="pkg-name">Fan Relationship Management</div>
+        <div class="pkg-tagline">Always-on. Always working.</div>
+        <div class="pkg-desc">Most artists know they should be talking to their fans. Few have the time or the team to do it. A D2F specialist handles every touchpoint across email and SMS, applying lifecycle discipline and your Openstage data to move fans from first follow to paying customer.</div>
+      </div>
+      <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+    </div>
+    <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
+    <div class="pkg-main">
+      <div class="pkg-includes">
+        <div class="pkg-includes-label">What we do for you</div>
+        <ul class="pkg-bullets two-col">
+          <li>Full fanbase segmentation audit and ongoing refinement</li>
+          <li>All fan comms written, built, and sent across email and SMS</li>
+          <li>Lifecycle flows designed, built, and monitored</li>
+          <li>Pipeline and funnel development across acquire, engage, and convert</li>
+          <li>Segment-level strategy for superfans, casual listeners, lapsed fans, and prospects</li>
+          <li>Behavioral triggers and automation managed for you</li>
+          <li>Ongoing optimization based on open, click, and conversion data</li>
+          <li>Coordination with your campaign moments and release windows</li>
+        </ul>
+        <div class="pkg-divider-label">What you walk away with</div>
+        <ul class="pkg-bullets single-col">
+          <li>A D2F specialist running your fan comms end to end, month after month</li>
+          <li>Monthly reporting on fan pipeline health, plus proactive recommendations and a direct line to your specialist</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-price-col">
+      <a href="#" class="btn-pkg-cta">Talk To Our Team</a>
+      <hr class="price-sep">
+      <div class="avail-label">Engagement type</div>
+      <span class="avail-pill neutral">Monthly</span>
+      <div style="font-size:11px; color:rgba(255,255,255,0.28); margin: 4px 0 12px; padding-left: 2px;">*3 month minimum</div>
+      <hr class="price-sep">
+      <div class="avail-label">Availability</div>
+      <span class="avail-pill neutral">Any plan, any artist</span>
+    </div>
+    </div></div></div>
+  </div>
+</div>
+
+<!-- ══ FAQ ══ -->
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-h2" style="color:#F5C518;">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-grid">
+
+    <div class="faq-item open" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">Do I need to be on Legendary to buy Artist Services?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">No. Any package, any plan, any artist. A Build artist can buy Campaign Execution. A Legendary artist can buy Audience Development. Artist Services are completely separate from your support tier and have nothing to do with which plan you're on.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">I'm on Legendary. Do I get advisory sessions AND Artist Services?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Yes, they stack. Legendary gives you 4 x monthly advisory sessions focused on platform guidance. Artist Services is a separate engagement where a D2F specialist executes work for you. Different products, different purposes. Legendary artists can and should add Artist Services for campaigns and key moments.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">How is Artist Services different from Platform Support?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Support answers "how do I do this in Openstage?" Artist Services answers "what should I be doing to grow, and can someone help build or run it?" Support is reactive. Artist Services is prescriptive, custom, and hands-on execution.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">Who actually does the work?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">A D2F specialist, not the support team. Your specialist is a separate engagement, scoped and signed off before work starts. They understand the artist, the fanbase, and the goals they're building toward.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">How does billing work?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Concierge Onboarding and Audience Development Strategy are one-off engagements, flat fee, single activation. Campaign Execution and Fan Relationship Management run on 3-month minimums with 30-day cycles from start date. Pricing for all packages is on request. Talk to the team before anything is scoped.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">My campaign is longer than 30 days. What do I do?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Campaign Execution is built for this. Extended and multi-month engagements are available. The 3-month minimum is the starting point, not the ceiling. Talk to the team and we'll scope it correctly from the start.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">What if I need more than what was scoped?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Anything outside the original scope is discussed before work expands, never after. All scope changes are agreed in writing before they begin. Talk to the team and we'll figure out what that looks like.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-text">When will Artist Services be available?</span>
+        <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span>
+      </div>
+      <div class="faq-a">Launching with a small pilot group first. Talk to the team to get on the list. We're not scaling delivery until the pilot is validated and onboarding resource is confirmed.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer-wrap">
+  <div class="footer-cta">
+    <h2>Ready to go further?<br>We've got you covered.</h2>
+    <a href="#" class="btn-footer">Talk To Our Team</a>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-logo">Openstage</div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Support</a>
+    </div>
+    <div class="footer-copy">Internal use only. Not for distribution.</div>
+  </div>
+</div>
+
+</body>
+</html>
