@@ -11,7 +11,7 @@
 
   /* ── HERO ── */
   .hero { }
-  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px 0; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px 48px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
   .hero-text { padding-bottom: 8px; }
   .pill-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #F5C518; border: 1px solid rgba(245,197,24,.4); border-radius: 100px; padding: 7px 18px; }
   .hero h1 { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 50px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 20px; }
@@ -67,8 +67,8 @@
   .pkg-main { border-right: 1px solid rgba(255,255,255,0.08); }
 
   /* Header row */
-  .pkg-name { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 26px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 5px; color: #F5C518; }
-  .pkg-tagline { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+  .pkg-name { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 26px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 5px; color: #fff; }
+  .pkg-tagline { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #F5C518; margin-bottom: 12px; }
   .pkg-desc { font-size: 13px; color: rgba(255,255,255,0.46); line-height: 1.65; }
 
   /* Includes row */
@@ -76,8 +76,11 @@
   .pkg-includes-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin-bottom: 16px; }
   .pkg-bullets { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px 24px; }
   .pkg-bullets.two-col { grid-template-columns: repeat(2, 1fr); }
-  .pkg-bullets li { font-size: 12.5px; color: rgba(255,255,255,0.68); line-height: 1.45; display: flex; align-items: flex-start; gap: 9px; padding: 4px 0; }
+  .pkg-bullets.single-col { grid-template-columns: 1fr; gap: 12px; }
+  .pkg-bullets li { font-size: 13.5px; color: rgba(255,255,255,0.72); line-height: 1.45; display: flex; align-items: flex-start; gap: 9px; padding: 4px 0; }
   .pkg-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #F5C518; flex-shrink: 0; margin-top: 5px; }
+  .pkg-bullets.single-col li { font-size: 13.5px; color: rgba(255,255,255,0.72); line-height: 1.5; gap: 11px; padding: 0; }
+  .pkg-bullets.single-col li::before { content: ''; width: 14px; height: 14px; border-radius: 0; background: none; margin-top: 1px; flex-shrink: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpolyline points='2,7.5 5.5,11 12,3' fill='none' stroke='%23F5C518' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; }
   .pkg-divider-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin: 20px 0 14px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
 
   /* Price column */
@@ -176,27 +179,14 @@
       </div>
     </div>
   </div>
-
-  <div class="layer-strip-wrap">
-    <div class="layer-strip">
-      <div class="layer-card">
-        <div class="layer-label">Layer 1</div>
-        <div class="layer-title">Artist Support</div>
-        <div class="layer-desc">Reactive help. Questions answered, problems solved. If the question is "how do I do this in Openstage?" it's Support.</div>
-        <span class="badge badge-muted">Included on all plans</span>
-      </div>
-      <div class="layer-card">
-        <div class="layer-label">Layer 2</div>
-        <div class="layer-title">Artist Services</div>
-        <div class="layer-desc">Any question about what to do to accomplish your goals and how to execute it. Strategy and execution, done for you.</div>
-        <span class="badge badge-gold">Paid add-on, any plan</span>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- ══ PACKAGES ══ -->
 <div class="section" id="packages">
+  <div class="section-header">
+    <h2 class="section-h2" style="color:#F5C518;">Packages</h2>
+    <p class="section-sub">Four ways to work with us. One-off or ongoing and always on. We do the work and show you the ropes. We meet you wherever you're at, so you and your fans get the most out of Openstage.</p>
+  </div>
 
   <!-- ONBOARDING -->
   <div class="pkg-card">
@@ -211,27 +201,21 @@
     <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
     <div class="pkg-main">
       <div class="pkg-includes">
-        <div class="pkg-includes-label">The work</div>
-        <ul class="pkg-bullets">
-          <li>Audit and data collation</li>
-          <li>Ingest into platform</li>
-          <li>Core segments created</li>
-          <li>Landing page set up</li>
-          <li>Link-in-bio environment</li>
-          <li>SMS and email templates configured</li>
-          <li>Lifecycle flows and journey design</li>
+        <div class="pkg-includes-label">What we do for you</div>
+        <ul class="pkg-bullets two-col">
+          <li>Data audit, collation, and import</li>
+          <li>Core audiences built</li>
+          <li>Landing page and link-in-bio set up</li>
+          <li>Email and SMS templates configured</li>
+          <li>Lifecycle flows and journeys designed</li>
           <li>Privacy policy review</li>
           <li>Artist profile review</li>
-          <li>Product tutorials</li>
-          <li>Data analysis tutorial</li>
-          <li>Inside Out and 1PD capture playbook session</li>
+          <li>Platform and data tutorials, plus 1PD capture playbook session</li>
         </ul>
         <div class="pkg-divider-label">What you walk away with</div>
-        <ul class="pkg-bullets two-col">
-          <li>Two 60-minute calls (bookend front and back)</li>
-          <li>On-demand videos / PDFs (resource library)</li>
-          <li>In-product customized profile / templates / flows / segments</li>
-          <li>Standard intake form with requirements</li>
+        <ul class="pkg-bullets single-col">
+          <li>A fully configured account, ready to grow from the moment you log in</li>
+          <li>Two 60-minute calls bookending the work, plus an on-demand resource library to keep going</li>
         </ul>
       </div>
     </div>
@@ -261,21 +245,19 @@
     <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
     <div class="pkg-main">
       <div class="pkg-includes">
-        <div class="pkg-includes-label">The work</div>
+        <div class="pkg-includes-label">What we do for you</div>
         <ul class="pkg-bullets two-col">
-          <li>Full fanbase audit</li>
-          <li>2 x strategy workshops with your specialist</li>
-          <li>Fan development playbook written for the artist</li>
-          <li>Journeys mapped across acquire, engage, activate</li>
+          <li>Full fanbase audit and analysis</li>
+          <li>Two strategy workshops with your specialist</li>
           <li>Segmentation logic and triggers defined</li>
-          <li>Intake consult: goals, brand overview, preferences, restrictions</li>
+          <li>Fan journeys mapped across acquire, engage, and activate</li>
+          <li>Custom fan development playbook written for you</li>
+          <li>Intake consult covering goals, brand, preferences, and restrictions</li>
         </ul>
         <div class="pkg-divider-label">What you walk away with</div>
-        <ul class="pkg-bullets two-col">
-          <li>Two 60-minute calls (bookend front and back)</li>
-          <li>Custom growth plan and genre-specific playbook</li>
-          <li>Async specialist access throughout</li>
-          <li>Done-for-you execution available on request</li>
+        <ul class="pkg-bullets single-col">
+          <li>A clear, genre-specific growth strategy built around where you are and where you want to go</li>
+          <li>A playbook you can run yourself, plus async access to your specialist throughout</li>
         </ul>
       </div>
     </div>
@@ -351,24 +333,21 @@
     <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
     <div class="pkg-main">
       <div class="pkg-includes">
-        <div class="pkg-includes-label">The work</div>
-        <ul class="pkg-bullets">
+        <div class="pkg-includes-label">What we do for you</div>
+        <ul class="pkg-bullets two-col">
           <li>Full fanbase segmentation audit and ongoing refinement</li>
           <li>All fan comms written, built, and sent across email and SMS</li>
-          <li>Lifecycle flow design, build, and monitoring</li>
-          <li>Pipeline and funnel development: acquire, engage, convert</li>
-          <li>Segment-level strategy: superfans, casual listeners, lapsed fans, prospects</li>
-          <li>Behavioral trigger logic and automation management</li>
-          <li>Monthly performance report and review call</li>
+          <li>Lifecycle flows designed, built, and monitored</li>
+          <li>Pipeline and funnel development across acquire, engage, and convert</li>
+          <li>Segment-level strategy for superfans, casual listeners, lapsed fans, and prospects</li>
+          <li>Behavioral triggers and automation managed for you</li>
           <li>Ongoing optimization based on open, click, and conversion data</li>
-          <li>Coordination with campaign moments and release windows</li>
+          <li>Coordination with your campaign moments and release windows</li>
         </ul>
         <div class="pkg-divider-label">What you walk away with</div>
-        <ul class="pkg-bullets two-col">
-          <li>A D2F specialist running your fan comms end-to-end</li>
-          <li>Monthly reporting on fan pipeline health and movement</li>
-          <li>Proactive recommendations, not just execution</li>
-          <li>Direct line to your specialist for approvals and direction</li>
+        <ul class="pkg-bullets single-col">
+          <li>A D2F specialist running your fan comms end to end, month after month</li>
+          <li>Monthly reporting on fan pipeline health, plus proactive recommendations and a direct line to your specialist</li>
         </ul>
       </div>
     </div>
