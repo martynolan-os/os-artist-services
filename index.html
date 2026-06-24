@@ -15,7 +15,7 @@
   .hero-text { padding-bottom: 8px; }
   .pill-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #F5C518; border: 1px solid rgba(245,197,24,.4); border-radius: 100px; padding: 7px 18px; }
   .hero h1 { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 50px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 20px; }
-  .hero h1 em { font-style: normal; color: #F5C518; }
+  .hero h1 em { font-style: normal; color: #fff; }
   .hero-sub { font-size: 15px; color: rgba(255,255,255,0.42); line-height: 1.7; margin-bottom: 32px; }
   .hero-ctas { display: flex; gap: 12px; }
 
@@ -24,14 +24,12 @@
   .hv-intro { font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 4px; }
   .ladder-step { display: flex; align-items: center; gap: 16px; background: #111113; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px 20px; position: relative; transition: all .2s; }
   .ladder-step.highlight { border-color: rgba(245,197,24,.35); background: rgba(245,197,24,.04); box-shadow: 0 0 40px rgba(245,197,24,.05); }
-  .ladder-num { font-family: 'Anton', sans-serif; font-size: 28px; color: rgba(255,255,255,.18); line-height: 1; flex-shrink: 0; width: 38px; }
+  .ladder-num { font-family: 'Anton', sans-serif; font-size: 26px; color: rgba(255,255,255,.18); line-height: 1; flex-shrink: 0; width: 30px; }
   .ladder-step.highlight .ladder-num { color: #F5C518; }
-  .ladder-body { flex: 1; }
-  .ladder-name { font-family: 'Anton', sans-serif; font-size: 17px; text-transform: uppercase; letter-spacing: .01em; color: #fff; margin-bottom: 3px; }
-  .ladder-step.highlight .ladder-name { color: #F5C518; }
-  .ladder-desc { font-size: 12px; color: rgba(255,255,255,.42); line-height: 1.4; }
-  .ladder-tag { font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); border: 1px solid rgba(255,255,255,.12); border-radius: 100px; padding: 4px 10px; flex-shrink: 0; }
-  .ladder-step.highlight .ladder-tag { color: #F5C518; border-color: rgba(245,197,24,.4); }
+  .ladder-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.3; flex: 1; }
+  .ladder-step.highlight .ladder-desc { color: rgba(255,255,255,.8); }
+  .ladder-tag { font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.14); border-radius: 100px; padding: 5px 12px; flex-shrink: 0; width: 96px; text-align: center; }
+  .ladder-step.highlight .ladder-tag { color: #F5C518; border-color: rgba(245,197,24,.4); background: rgba(245,197,24,.06); }
 
   .btn-primary { background: #F5C518; color: #000; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border-radius: 6px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
   .btn-secondary { background: transparent; color: rgba(255,255,255,0.55); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; text-decoration: none; display: inline-block; }
@@ -40,8 +38,8 @@
   .layer-strip-wrap { max-width: 1200px; margin: 0 auto; padding: 44px 48px 0; }
   .layer-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 28px 0 36px; }
   .layer-card { background: #141414; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; }
-  .layer-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin-bottom: 6px; }
-  .layer-title { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 16px; letter-spacing: .005em; margin-bottom: 6px; }
+  .layer-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+  .layer-title { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 16px; letter-spacing: .005em; margin-bottom: 6px; color: #F5C518; }
   .layer-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.55; flex: 1; margin-bottom: 14px; }
   .badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 9px; border-radius: 4px; align-self: flex-start; margin-top: auto; }
   .badge-gold { background: rgba(245,197,24,0.12); color: #F5C518; border: 1px solid rgba(245,197,24,0.25); }
@@ -55,13 +53,22 @@
   .section-sub { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.65; }
 
   /* ── PACKAGE CARD ── */
-  .pkg-card { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; margin-bottom: 20px; overflow: hidden; display: grid; grid-template-columns: 1fr 252px; }
+  .pkg-card { background: #111111; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; margin-bottom: 14px; overflow: hidden; }
+  .pkg-header { padding: 26px 32px; cursor: pointer; display: flex; align-items: flex-start; gap: 20px; }
+  .pkg-header-text { flex: 1; }
+  .pkg-chevron { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; transition: all .2s; }
+  .pkg-chevron svg { width: 13px; height: 13px; stroke: rgba(255,255,255,0.5); fill: none; stroke-width: 2; transition: transform .25s; }
+  .pkg-card.open .pkg-chevron { border-color: rgba(245,197,24,0.5); background: rgba(245,197,24,0.08); }
+  .pkg-card.open .pkg-chevron svg { transform: rotate(180deg); stroke: #F5C518; }
+  .pkg-body-collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+  .pkg-card.open .pkg-body-collapse { grid-template-rows: 1fr; }
+  .pkg-body-inner { overflow: hidden; }
+  .pkg-body-grid { display: grid; grid-template-columns: 1fr 252px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .pkg-main { border-right: 1px solid rgba(255,255,255,0.06); }
 
   /* Header row */
-  .pkg-header { padding: 28px 32px 24px; }
-  .pkg-type-tag { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; background: rgba(245,197,24,0.1); color: #F5C518; border: 1px solid rgba(245,197,24,0.2); margin-bottom: 12px; }
   .pkg-name { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 26px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 5px; color: #F5C518; }
-  .pkg-tagline { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #F5C518; margin-bottom: 12px; }
+  .pkg-tagline { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
   .pkg-desc { font-size: 13px; color: rgba(255,255,255,0.46); line-height: 1.65; }
 
   /* Includes row */
@@ -148,36 +155,24 @@
     </div>
     <div class="hero-visual">
       <div class="ladder-step">
-        <div class="ladder-num">01</div>
-        <div class="ladder-body">
-          <div class="ladder-name">Concierge Onboarding</div>
-          <div class="ladder-desc">Get set up for success</div>
-        </div>
+        <div class="ladder-num">1</div>
         <div class="ladder-tag">Setup</div>
+        <div class="ladder-desc">Get set up for success</div>
       </div>
       <div class="ladder-step">
-        <div class="ladder-num">02</div>
-        <div class="ladder-body">
-          <div class="ladder-name">Audience Development</div>
-          <div class="ladder-desc">Build the strategy</div>
-        </div>
+        <div class="ladder-num">2</div>
         <div class="ladder-tag">Strategy</div>
+        <div class="ladder-desc">Build the strategy</div>
       </div>
       <div class="ladder-step highlight">
-        <div class="ladder-num">03</div>
-        <div class="ladder-body">
-          <div class="ladder-name">Campaign Execution</div>
-          <div class="ladder-desc">Deliver a specific moment</div>
-        </div>
+        <div class="ladder-num">3</div>
         <div class="ladder-tag">Execution</div>
+        <div class="ladder-desc">We run your campaign, end to end</div>
       </div>
       <div class="ladder-step">
-        <div class="ladder-num">04</div>
-        <div class="ladder-body">
-          <div class="ladder-name">Fan Relationship Mgmt</div>
-          <div class="ladder-desc">Ongoing optimization and execution</div>
-        </div>
+        <div class="ladder-num">4</div>
         <div class="ladder-tag">Lifecycle</div>
+        <div class="ladder-desc">Always-on fan messaging</div>
       </div>
     </div>
   </div>
@@ -202,21 +197,19 @@
 
 <!-- ══ PACKAGES ══ -->
 <div class="section" id="packages">
-  <div class="section-header">
-    <div class="section-eyebrow">Packages</div>
-    <h2 class="section-h2">A specialist in your corner. From setup to full campaign execution.</h2>
-    <p class="section-sub">Four packages. Any plan, any artist.</p>
-  </div>
 
   <!-- ONBOARDING -->
   <div class="pkg-card">
-    <div class="pkg-main">
-      <div class="pkg-header">
-        <div class="pkg-type-tag">Package</div>
+    <div class="pkg-header" onclick="this.closest('.pkg-card').classList.toggle('open')">
+      <div class="pkg-header-text">
         <div class="pkg-name">Concierge Onboarding</div>
         <div class="pkg-tagline">Set up for success</div>
         <div class="pkg-desc">Data imported, segments built, first journey live, team walked through. Removes every reason a new artist stalls before they start.</div>
       </div>
+      <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+    </div>
+    <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
+    <div class="pkg-main">
       <div class="pkg-includes">
         <div class="pkg-includes-label">The work</div>
         <ul class="pkg-bullets">
@@ -252,17 +245,21 @@
       <span class="avail-pill gold">Included in Legendary</span>
       <span class="avail-pill neutral">Sold separately to Build</span>
     </div>
+    </div></div></div>
   </div>
 
   <!-- AUDIENCE DEVELOPMENT -->
   <div class="pkg-card">
-    <div class="pkg-main">
-      <div class="pkg-header">
-        <div class="pkg-type-tag">Package</div>
+    <div class="pkg-header" onclick="this.closest('.pkg-card').classList.toggle('open')">
+      <div class="pkg-header-text">
         <div class="pkg-name">Audience Development Strategy</div>
         <div class="pkg-tagline">Strategy. Plan. Playbook.</div>
         <div class="pkg-desc">Two modes: we build the plan and they execute, or we do it for them. Artist provides all creative assets in the done-for-you model. Grounded in the Inside Out methodology.</div>
       </div>
+      <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+    </div>
+    <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
+    <div class="pkg-main">
       <div class="pkg-includes">
         <div class="pkg-includes-label">The work</div>
         <ul class="pkg-bullets two-col">
@@ -291,17 +288,21 @@
       <div class="avail-label">Availability</div>
       <span class="avail-pill neutral">Any plan, any artist</span>
     </div>
+    </div></div></div>
   </div>
 
   <!-- CAMPAIGN MANAGEMENT -->
   <div class="pkg-card">
-    <div class="pkg-main">
-      <div class="pkg-header">
-        <div class="pkg-type-tag">Package</div>
+    <div class="pkg-header" onclick="this.closest('.pkg-card').classList.toggle('open')">
+      <div class="pkg-header-text">
         <div class="pkg-name">Campaign Execution</div>
         <div class="pkg-tagline">Releases. Tours. Drops.</div>
         <div class="pkg-desc">Built around a specific moment: tour launch, presale, ticket unlock, album drop, or a longer multi-month arc. The primary commercial entry point for Artist Services.</div>
       </div>
+      <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+    </div>
+    <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
+    <div class="pkg-main">
       <div class="pkg-includes">
         <div class="pkg-includes-label">The work</div>
         <ul class="pkg-bullets">
@@ -334,17 +335,21 @@
       <div class="avail-label">Availability</div>
       <span class="avail-pill neutral">Any plan, any artist</span>
     </div>
+    </div></div></div>
   </div>
 
   <!-- FAN RELATIONSHIP MANAGEMENT -->
   <div class="pkg-card">
-    <div class="pkg-main">
-      <div class="pkg-header">
-        <div class="pkg-type-tag">Package</div>
+    <div class="pkg-header" onclick="this.closest('.pkg-card').classList.toggle('open')">
+      <div class="pkg-header-text">
         <div class="pkg-name">Fan Relationship Management</div>
         <div class="pkg-tagline">Always-on. Always working.</div>
         <div class="pkg-desc">Most artists know they should be talking to their fans. Few have the time or the team to do it. A D2F specialist handles every touchpoint across email and SMS, applying lifecycle discipline and your Openstage data to move fans from first follow to paying customer.</div>
       </div>
+      <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
+    </div>
+    <div class="pkg-body-collapse"><div class="pkg-body-inner"><div class="pkg-body-grid">
+    <div class="pkg-main">
       <div class="pkg-includes">
         <div class="pkg-includes-label">The work</div>
         <ul class="pkg-bullets">
@@ -377,6 +382,7 @@
       <div class="avail-label">Availability</div>
       <span class="avail-pill neutral">Any plan, any artist</span>
     </div>
+    </div></div></div>
   </div>
 </div>
 
@@ -385,8 +391,7 @@
 <!-- ══ FAQ ══ -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow">Frequently asked questions</div>
-    <h2 class="section-h2">Common questions about Artist Services.</h2>
+    <h2 class="section-h2" style="color:#F5C518;">Frequently Asked Questions</h2>
   </div>
   <div class="faq-grid">
 
