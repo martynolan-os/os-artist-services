@@ -10,7 +10,7 @@
   body { background: #0a0a0a; color: #fff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
 
   /* ── HERO ── */
-  .hero { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .hero { }
   .hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px 0; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
   .hero-text { padding-bottom: 8px; }
   .pill-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #F5C518; border: 1px solid rgba(245,197,24,.4); border-radius: 100px; padding: 7px 18px; }
@@ -63,8 +63,8 @@
   .pkg-body-collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
   .pkg-card.open .pkg-body-collapse { grid-template-rows: 1fr; }
   .pkg-body-inner { overflow: hidden; }
-  .pkg-body-grid { display: grid; grid-template-columns: 1fr 252px; border-top: 1px solid rgba(255,255,255,0.06); }
-  .pkg-main { border-right: 1px solid rgba(255,255,255,0.06); }
+  .pkg-body-grid { display: grid; grid-template-columns: 1fr 252px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .pkg-main { border-right: 1px solid rgba(255,255,255,0.08); }
 
   /* Header row */
   .pkg-name { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 26px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 5px; color: #F5C518; }
@@ -78,10 +78,10 @@
   .pkg-bullets.two-col { grid-template-columns: repeat(2, 1fr); }
   .pkg-bullets li { font-size: 12.5px; color: rgba(255,255,255,0.68); line-height: 1.45; display: flex; align-items: flex-start; gap: 9px; padding: 4px 0; }
   .pkg-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #F5C518; flex-shrink: 0; margin-top: 5px; }
-  .pkg-divider-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin: 20px 0 14px; padding-top: 20px; }
+  .pkg-divider-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F5C518; margin: 20px 0 14px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
 
   /* Price column */
-  .pkg-price-col { padding: 52px 24px 28px; display: flex; flex-direction: column; align-items: stretch; }
+  .pkg-price-col { padding: 24px; display: flex; flex-direction: column; align-items: stretch; }
   .price-block { margin-bottom: 4px; }
   .price-label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.26); margin-bottom: 7px; }
   .price-val { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; line-height: 1; color: #fff; margin-bottom: 5px; }
@@ -128,7 +128,7 @@
   .faq-item.open .faq-a { display: block; }
 
   /* ── FOOTER ── */
-  .footer-wrap { max-width: 1200px; margin: 72px auto 0; }
+  .footer-wrap { max-width: 1200px; margin: 48px auto 0; }
   .footer-cta { text-align: center; padding: 80px 48px 72px; border-bottom: 1px solid rgba(255,255,255,0.07); }
   .footer-cta h2 { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; font-size: 48px; line-height: 1.0; letter-spacing: .005em; margin-bottom: 16px; }
   .footer-cta-sub { font-size: 15px; color: rgba(255,255,255,0.38); margin-bottom: 36px; line-height: 1.6; }
@@ -204,7 +204,7 @@
       <div class="pkg-header-text">
         <div class="pkg-name">Concierge Onboarding</div>
         <div class="pkg-tagline">Set up for success</div>
-        <div class="pkg-desc">Data imported, segments built, first journey live, team walked through. Removes every reason a new artist stalls before they start.</div>
+        <div class="pkg-desc">Data imported, audiences built, first journey live, team walked through. Removes every reason a new artist stalls before they start.</div>
       </div>
       <div class="pkg-chevron"><svg viewBox="0 0 14 14"><polyline points="3,5 7,9 11,5"/></svg></div>
     </div>
@@ -385,8 +385,6 @@
     </div></div></div>
   </div>
 </div>
-
-<hr class="full-divider">
 
 <!-- ══ FAQ ══ -->
 <div class="section">
